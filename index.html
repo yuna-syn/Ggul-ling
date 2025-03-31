@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시트러스 밤 - 감귤박 배쓰밤</title>
+    <style>
+        :root {
+            --primary-color: #FF9F1C;
+            --secondary-color: #2EC4B6;
+            --light-color: #FDFFFC;
+            --dark-color: #011627;
+            --accent-color: #E71D36;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #25a99d;
+        }
+        
+        .about {
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            text-align: center;
+            background-color: white;
+        }
+        
+        .features-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .products {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .products-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 280px;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+        
+        .contact {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e48c00;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>시트러스 밤</h1>
+            <p>감귤박을 활용한 친환경 배쓰밤 프로젝트</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">홈</a></li>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#features">특징</a></li>
+            <li><a href="#products">제품</a></li>
+            <li><a href="#process">제작 과정</a></li>
+            <li><a href="#contact">문의</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>자연의 향기, 감귤의 생명력</h2>
+            <p>버려지는 감귤박을 재활용하여 만든 100% 친환경 배쓰밤으로 지구를 지키고 건강한 아름다움을 경험하세요.</p>
+            <a href="#products" class="btn">제품 보기</a>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2>프로젝트 소개</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>시트러스 밤은 버려지는 감귤박을 활용한 친환경 배쓰밤 프로젝트입니다. 매년 수확 시즌마다 버려지는 수많은 감귤박을 재활용하여 지속 가능한 미래를 위한 작은 발걸음을 내딛고 있습니다.</p>
+                    <p>감귤박에 함유된 비타민 C와 항산화 성분이 피부에 활력을 불어넣고, 감귤 특유의 상큼한 향기는 심신의 릴렉싱 효과를 제공합니다.</p>
+                    <p>모든 제품은 화학 성분 없이 자연 유래 성분만을 사용하여 환경과 건강 모두를 생각하는 가치 있는 소비를 지향합니다.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/300" alt="감귤박 배쓰밤">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <h2>제품 특징</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>친환경 업사이클링</h3>
+                    <p>버려지는 감귤박을 재활용하여 환경 보호에 기여합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍊</div>
+                    <h3>천연 성분</h3>
+                    <p>화학 성분 없이 자연 유래 성분만을 사용합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>비타민 영양</h3>
+                    <p>감귤에 풍부한 비타민 C와 항산화 성분이 피부에 활력을 줍니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2>제품 라인업</h2>
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('/api/placeholder/280/200')"></div>
+                    <div class="product-info">
+                        <h3>시트러스 클래식</h3>
+                        <p>감귤 특유의 상큼한 향기가 가득한 기본형 배쓰밤</p>
+                        <div class="product-price">₩12,000</div>
+                        <a href="#contact" class="btn">구매 문의</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('/api/placeholder/280/200')"></div>
+                    <div class="product-info">
+                        <h3>시트러스 라벤더</h3>
+                        <p>감귤과 라벤더의 조화로운 향기로 릴렉싱 효과를 높인 배쓰밤</p>
+                        <div class="product-price">₩15,000</div>
+                        <a href="#contact" class="btn">구매 문의</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('/api/placeholder/280/200')"></div>
+                    <div class="product-info">
+                        <h3>시트러스 모이스처</h3>
+                        <p>시어버터와 감귤오일을 결합하여 보습 효과를 높인 배쓰밤</p>
+                        <div class="product-price">₩18,000</div>
+                        <a href="#contact" class="btn">구매 문의</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="process" id="process">
+        <div class="container">
+            <h2>제작 과정</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>감귤박 수거</h3>
+                    <p>제주 지역 농가에서 버려지는 감귤박을 수거합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>건조 및 가공</h3>
+                    <p>수거한 감귤박을 자연 건조하고 미세 가루로 가공합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>성분 추출</h3>
+                    <p>감귤박에서 비타민과 에센셜 오일을 추출합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>제형화</h3>
+                    <p>천연 성분과 배합하여 배쓰밤 형태로 제형화합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>포장 및 배송</h3>
+                    <p>생분해성 포장재를 사용하여 환경 친화적으로 포장합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>문의하기</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">제목</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">메시지</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">보내기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>시트러스 밤</h3>
+            <p>감귤박을 활용한 친환경 배쓰밤 프로젝트</p>
+            <div class="social-icons">
+                <a href="#">📱</a>
+                <a href="#">📷</a>
+                <a href="#">✉️</a>
+            </div>
+            <p>&copy; 2025 시트러스 밤. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>
