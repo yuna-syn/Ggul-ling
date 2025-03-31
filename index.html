@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>시트러스 밤 - 감귤박 배쓰밤</title>
     <style>
+        /* 기존 CSS 코드는 유지합니다 */
         :root {
             --primary-color: #FF9F1C;
             --secondary-color: #2EC4B6;
@@ -27,11 +28,38 @@
         }
         
         header {
-            background-color: var(--primary-color);
+            position: relative;
             color: white;
             text-align: center;
             padding: 2rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            height: 300px;
+        }
+        
+        header .iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 159, 28, 0.7);
+            z-index: 1;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 2;
         }
         
         nav {
@@ -74,7 +102,7 @@
         }
         
         .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1594030086789-5c640d552028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -313,6 +341,27 @@
             font-size: 1.5rem;
         }
         
+        .form-success {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        
+        /* 구글 폼 iframe 스타일 */
+        .google-form-container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .google-form-container iframe {
+            width: 100%;
+            height: 680px;
+            border: none;
+        }
+        
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -342,14 +391,25 @@
             .step::after {
                 display: none;
             }
+            
+            .google-form-container iframe {
+                height: 750px; /* 모바일에서는 더 높게 설정 */
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="iframe-container">
+            <div style='position: relative; width: 100%; height: 0; padding-top: 18%; overflow: hidden; will-change: transform;'>
+                <iframe loading='lazy' style='position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;' src='https://www.miricanvas.com/v/14e1htd?embed'>
+                </iframe>
+            </div>
+        </div>
         <div class="container">
-            <h1>시트러스 밤</h1>
-            <p>감귤박을 활용한 친환경 배쓰밤 프로젝트</p>
+            <h1>귤:ling 배쓰밤</h1>
+            <p>"버려지던 감귤박, 이제는 힐링이 됩니다!"</p>
+            <p>자연을 담은 첫 번째 입욕제, 감귤의 상큼함으로 채우는 친환경 힐링 타임</p>
         </div>
     </header>
     
@@ -377,12 +437,14 @@
             <h2>프로젝트 소개</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>시트러스 밤은 버려지는 감귤박을 활용한 친환경 배쓰밤 프로젝트입니다. 매년 수확 시즌마다 버려지는 수많은 감귤박을 재활용하여 지속 가능한 미래를 위한 작은 발걸음을 내딛고 있습니다.</p>
-                    <p>감귤박에 함유된 비타민 C와 항산화 성분이 피부에 활력을 불어넣고, 감귤 특유의 상큼한 향기는 심신의 릴렉싱 효과를 제공합니다.</p>
-                    <p>모든 제품은 화학 성분 없이 자연 유래 성분만을 사용하여 환경과 건강 모두를 생각하는 가치 있는 소비를 지향합니다.</p>
+                    <p> 제주도에서는 과즙을 짜낸 후 남은 과육과 껍질인 감귤 부산물(감귤박)이 연간 5~7만 톤 발생하여 막대한 처리 비용과 환경오염 문제를 일으키고 있습니다. 감귤박 처리 문제로 제주도는 매년 어려움을 겪고 있으며, 감귤농가는 높은 처리비용으로 경제적 부담을 안고 있습니다.
+                                                                                             </p>
+                    <p> 귤링은 버려지는 수많은 감귤박을 가치있게 활용합니다. 저희는 감귤박으로 인해 발생하는 사회 문제에 집중하여, 제주 농민들의 경제적 어려움을 도와주는 동시에 환경 문제의 솔루션으로 감귤박 배쓰밤을 기획하게 되었습니다. 감귤박을 재활용하여 배쓰밤을 제작함으로써 지속 가능한 미래를 위한 작은 발걸음을 내딛고 있습니다.
+                                                                                             </p>
+                    <p> 감귤박에 함유된 헤스페리딘 성분과 비타민 C, 그리고 항산화 성분이 피부에 활력을 불어넣고, 감귤 특유의 상큼한 향기는 심신의 릴렉싱 효과를 제공합니다. 귤링은 자연 유래 성분을 사용하여 환경과 건강 모두를 생각하는 가치 있는 소비를 지향합니다.</p>
                 </div>
                 <div class="about-image">
-                    <img src="/api/placeholder/500/300" alt="감귤박 배쓰밤">
+                    <img src="https://github.com/yuna-syn/---/blob/main/images/assortment-delicious-healthy-snacks.jpg?raw=true" alt="감귤박 배쓰밤">
                 </div>
             </div>
         </div>
@@ -400,12 +462,12 @@
                 <div class="feature-card">
                     <div class="feature-icon">🍊</div>
                     <h3>천연 성분</h3>
-                    <p>화학 성분 없이 자연 유래 성분만을 사용합니다.</p>
+                    <p>화학 성분 없이 자연 유래 성분을 사용합니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">✨</div>
                     <h3>비타민 영양</h3>
-                    <p>감귤에 풍부한 비타민 C와 항산화 성분이 피부에 활력을 줍니다.</p>
+                    <p>감귤에 풍부한 헤스페리딘 성분과 비타민, 그리고 항산화 성분이 피부에 활력을 줍니다.</p>
                 </div>
             </div>
         </div>
@@ -416,29 +478,11 @@
             <h2>제품 라인업</h2>
             <div class="products-container">
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('/api/placeholder/280/200')"></div>
+                    <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/yuna-syn/---/f14ccd1601cb82be83b2d23a8c306a48a8b0d46a/images/KakaoTalk_20250328_234837264.jpg')"></div>
                     <div class="product-info">
-                        <h3>시트러스 클래식</h3>
+                        <h3>귤귤밤</h3>
                         <p>감귤 특유의 상큼한 향기가 가득한 기본형 배쓰밤</p>
-                        <div class="product-price">₩12,000</div>
-                        <a href="#contact" class="btn">구매 문의</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('/api/placeholder/280/200')"></div>
-                    <div class="product-info">
-                        <h3>시트러스 라벤더</h3>
-                        <p>감귤과 라벤더의 조화로운 향기로 릴렉싱 효과를 높인 배쓰밤</p>
-                        <div class="product-price">₩15,000</div>
-                        <a href="#contact" class="btn">구매 문의</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('/api/placeholder/280/200')"></div>
-                    <div class="product-info">
-                        <h3>시트러스 모이스처</h3>
-                        <p>시어버터와 감귤오일을 결합하여 보습 효과를 높인 배쓰밤</p>
-                        <div class="product-price">₩18,000</div>
+                        <div class="product-price">₩8,900</div>
                         <a href="#contact" class="btn">구매 문의</a>
                     </div>
                 </div>
@@ -458,7 +502,7 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>건조 및 가공</h3>
-                    <p>수거한 감귤박을 자연 건조하고 미세 가루로 가공합니다.</p>
+                    <p>수거한 감귤박을 건조하고 감귤박 파우더로 가공합니다.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
@@ -483,25 +527,9 @@
         <div class="container">
             <h2>문의하기</h2>
             <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">이름</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">제목</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">메시지</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">보내기</button>
-                </form>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhm-PVR4kG9Q62xDizUlRRVI2z-Gsyn-paV13f5bdbyJ-T0Q/viewform?embedded=true" width="640" height="777" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+                
+                </div>
             </div>
         </div>
     </section>
@@ -515,9 +543,8 @@
                 <a href="#">📷</a>
                 <a href="#">✉️</a>
             </div>
-            <p>&copy; 2025 시트러스 밤. All rights reserved.</p>
+            <p>&copy; 2025 귤링Ggul-ling. All rights reserved.</p>
         </div>
     </footer>
-    
 </body>
 </html>
