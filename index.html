@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>귤링 - 감귤박 배쓰밤</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 기존 CSS 코드는 유지합니다 */
         :root {
             --primary-color: #FF9F1C;
             --secondary-color: #2EC4B6;
@@ -25,6 +25,7 @@
             background-color: var(--light-color);
             color: var(--dark-color);
             line-height: 1.6;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
         }
         
         header {
@@ -43,6 +44,7 @@
         header .container {
             position: relative;
             z-index: 2;
+            padding: 0 1rem; /* 모바일에서 여백 추가 */
         }
         
         nav {
@@ -58,10 +60,11 @@
             display: flex;
             justify-content: center;
             list-style-type: none;
+            flex-wrap: wrap; /* 모바일에서 메뉴 랩핑 */
         }
         
         nav ul li {
-            margin: 0 1.5rem;
+            margin: 0.5rem 1rem;
         }
         
         nav ul li a {
@@ -69,6 +72,7 @@
             color: var(--dark-color);
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem; /* 모바일에서 글자 크기 조정 */
         }
         
         nav ul li a:hover {
@@ -76,12 +80,13 @@
         }
         
         section {
-            padding: 4rem 2rem;
+            padding: 3rem 1rem; /* 모바일에서 여백 조정 */
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px; /* 좌우 여백 추가 */
         }
         
         .hero {
@@ -90,16 +95,16 @@
             background-position: center;
             color: white;
             text-align: center;
-            padding: 8rem 2rem;
+            padding: 6rem 1rem; /* 모바일에서 패딩 조정 */
         }
         
         .hero h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem); /* 반응형 폰트 크기 */
             margin-bottom: 1rem;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 3vw, 1.2rem); /* 반응형 폰트 크기 */
             max-width: 800px;
             margin: 0 auto 2rem;
         }
@@ -145,27 +150,19 @@
             max-width: 100%;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: auto; /* 이미지 비율 유지 */
         }
         
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-             }
         .video-container {
             position: relative;
-            width: 25%; /* 크기 1/4로 조정 */
+            width: 100%; /* 모바일에서 전체 너비 */
+            max-width: 600px; /* 데스크톱에서 최대 너비 제한 */
             height: 0;
-            padding-top: 35.35353535353536%; /* 원본 비율 유지 */
-            margin: 0 auto;
+            padding-top: 56.25%; /* 16:9 비율 */
+            margin: 2rem auto;
             overflow: hidden;
         }
+        
         .video-container iframe {
             position: absolute;
             width: 100%;
@@ -174,6 +171,7 @@
             left: 0;
             border: none;
         }
+        
         .features {
             text-align: center;
             background-color: white;
@@ -182,18 +180,20 @@
         .features-container {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
         }
         
         .feature-card {
             background-color: #f9f9f9;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
+            width: 100%;
             max-width: 300px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            margin-bottom: 1rem; /* 모바일에서 카드 간격 */
         }
         
         .feature-card:hover {
@@ -224,8 +224,10 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
             max-width: 280px;
             transition: transform 0.3s;
+            margin-bottom: 1.5rem; /* 모바일에서 여백 */
         }
         
         .product-card:hover {
@@ -258,14 +260,15 @@
             justify-content: space-between;
             margin-top: 3rem;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem; /* 모바일에서 간격 조정 */
         }
         
         .step {
             text-align: center;
             flex: 1;
-            min-width: 200px;
+            min-width: 150px; /* 모바일에서 최소 너비 감소 */
             position: relative;
+            margin-bottom: 1.5rem; /* 모바일에서 간격 */
         }
         
         .step-number {
@@ -289,7 +292,7 @@
             max-width: 600px;
             margin: 0 auto;
             background-color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
@@ -338,7 +341,7 @@
             background-color: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 2rem 1rem; /* 모바일에서 패딩 조정 */
         }
         
         .social-icons {
@@ -349,61 +352,87 @@
             color: white;
             margin: 0 0.5rem;
             font-size: 1.5rem;
+            text-decoration: none; /* 소셜 아이콘 밑줄 제거 */
         }
         
-        .form-success {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-        
-        /* 구글 폼 iframe 스타일 */
-        .google-form-container {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .google-form-container iframe {
+        /* 구글 폼 스타일 */
+        .contact-form iframe {
             width: 100%;
             height: 680px;
             border: none;
         }
         
+        /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
+            header {
+                height: 220px; /* 모바일에서 헤더 높이 조정 */
+            }
+            
+            header h1 {
+                font-size: 1.8rem; /* 모바일에서 타이틀 크기 */
+            }
+            
+            header p {
+                font-size: 0.9rem; /* 모바일에서 서브타이틀 크기 */
+            }
+            
             nav ul {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row; /* 유지하고 랩핑으로 처리 */
+                justify-content: center;
             }
             
             nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
+                margin: 0.3rem 0.6rem;
             }
             
             .about-content {
                 flex-direction: column;
+                gap: 1.5rem;
             }
             
-            .process-steps {
-                flex-direction: column;
+            .feature-card, .product-card {
+                width: 90%; /* 모바일에서 너비 조정 */
+                margin: 0 auto 1.5rem;
             }
             
-            .step::after {
-                display: none;
+            .video-container {
+                width: 90%; /* 모바일에서 너비 조정 */
+                padding-top: 50.625%; /* 16:9 비율 유지 */
             }
             
-            .google-form-container iframe {
-                height: 750px; /* 모바일에서는 더 높게 설정 */
+            .contact-form iframe {
+                height: 750px; /* 모바일에서 높이 증가 */
+            }
+            
+            section {
+                padding: 2.5rem 1rem; /* 모바일에서 여백 감소 */
+            }
+            
+            h2 {
+                font-size: 1.5rem; /* 모바일에서 제목 크기 조정 */
+            }
+            
+            .step h3 {
+                font-size: 1rem; /* 모바일에서 단계 제목 크기 */
+            }
+            
+            .step p {
+                font-size: 0.9rem; /* 모바일에서 단계 설명 크기 */
+            }
+        }
+        
+        /* 태블릿 미디어 쿼리 추가 */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .feature-card, .product-card {
+                width: 45%; /* 태블릿에서 2열 배치 */
+            }
+            
+            .video-container {
+                width: 70%; /* 태블릿에서 너비 조정 */
+            }
+            
+            .step {
+                min-width: 180px; /* 태블릿에서 최소 너비 */
             }
         }
     </style>
@@ -441,11 +470,9 @@
             <h2>프로젝트 소개</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p> 제주도에서는 과즙을 짜낸 후 남은 과육과 껍질인 감귤 부산물(감귤박)이 연간 5~7만 톤 발생하여 막대한 처리 비용과 환경오염 문제를 일으키고 있습니다. 감귤박 처리 문제로 제주도는 매년 어려움을 겪고 있으며, 감귤농가는 높은 처리비용으로 경제적 부담을 안고 있습니다.
-                                                                                             </p>
-                    <p> 귤링은 버려지는 수많은 감귤박을 가치있게 활용합니다. 저희는 감귤박으로 인해 발생하는 사회 문제에 집중하여, 제주 농민들의 경제적 어려움을 도와주는 동시에 환경 문제의 솔루션으로 감귤박 배쓰밤을 기획하게 되었습니다. 감귤박을 재활용하여 배쓰밤을 제작함으로써 지속 가능한 미래를 위한 작은 발걸음을 내딛고 있습니다.
-                                                                                             </p>
-                    <p> 감귤박에 함유된 헤스페리딘 성분과 비타민 C, 그리고 항산화 성분이 피부에 활력을 불어넣고, 감귤 특유의 상큼한 향기는 심신의 릴렉싱 효과를 제공합니다. 귤링은 자연 유래 성분을 사용하여 환경과 건강 모두를 생각하는 가치 있는 소비를 지향합니다.</p>
+                    <p>제주도에서는 과즙을 짜낸 후 남은 과육과 껍질인 감귤 부산물(감귤박)이 연간 5~7만 톤 발생하여 막대한 처리 비용과 환경오염 문제를 일으키고 있습니다. 감귤박 처리 문제로 제주도는 매년 어려움을 겪고 있으며, 감귤농가는 높은 처리비용으로 경제적 부담을 안고 있습니다.</p>
+                    <p>귤링은 버려지는 수많은 감귤박을 가치있게 활용합니다. 저희는 감귤박으로 인해 발생하는 사회 문제에 집중하여, 제주 농민들의 경제적 어려움을 도와주는 동시에 환경 문제의 솔루션으로 감귤박 배쓰밤을 기획하게 되었습니다. 감귤박을 재활용하여 배쓰밤을 제작함으로써 지속 가능한 미래를 위한 작은 발걸음을 내딛고 있습니다.</p>
+                    <p>감귤박에 함유된 헤스페리딘 성분과 비타민 C, 그리고 항산화 성분이 피부에 활력을 불어넣고, 감귤 특유의 상큼한 향기는 심신의 릴렉싱 효과를 제공합니다. 귤링은 자연 유래 성분을 사용하여 환경과 건강 모두를 생각하는 가치 있는 소비를 지향합니다.</p>
                 </div>
                 <div class="about-image">
                     <img src="https://github.com/yuna-syn/---/blob/main/images/assortment-delicious-healthy-snacks.jpg?raw=true" alt="감귤박 배쓰밤">
@@ -487,15 +514,14 @@
                         <h3>귤귤밤</h3>
                         <p>감귤 특유의 상큼한 향기가 가득한 기본형 배쓰밤</p>
                         <div class="product-price">₩7,900</div>
-
                         <a href="#contact" class="btn">구매 문의</a>
-                       </div>
+                    </div>
                 </div>
- <!-- Miricanvas 동영상 삽입 -->
-    <div class="video-container">
-        <iframe src="https://www.miricanvas.com/v/14ewwim?embed" loading="lazy"></iframe>
-    </div>
-
+                
+                <!-- 동영상 삽입 -->
+                <div class="video-container">
+                    <iframe src="https://www.miricanvas.com/v/14ewwim?embed" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -537,9 +563,7 @@
         <div class="container">
             <h2>문의하기</h2>
             <div class="contact-form">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhm-PVR4kG9Q62xDizUlRRVI2z-Gsyn-paV13f5bdbyJ-T0Q/viewform?embedded=true" width="640" height="777" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
-                
-                </div>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhm-PVR4kG9Q62xDizUlRRVI2z-Gsyn-paV13f5bdbyJ-T0Q/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
             </div>
         </div>
     </section>
