@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>귤링 - 감귤박 바디바</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF9F1C;
+            --secondary-color: #2EC4B6;
+            --light-color: #FDFFFC;
+            --dark-color: #011627;
+            --accent-color: #E71D36;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+        }
+        
+        header {
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            height: 300px;
+            background-image: url('https://raw.githubusercontent.com/yuna-syn/header/7ebd0c0876edcd07abbcccfa6a7f6186759c0804/test/%EC%B5%9C%EC%A2%85%EB%B3%B8_%20%EB%B3%B5%EC%82%AC%EB%B3%B8-001.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem; /* 모바일에서 여백 추가 */
+        }
+        
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            flex-wrap: wrap; /* 모바일에서 메뉴 랩핑 */
+        }
+        
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem; /* 모바일에서 글자 크기 조정 */
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 3rem 1rem; /* 모바일에서 여백 조정 */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px; /* 좌우 여백 추가 */
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://github.com/yuna-syn/tree/blob/main/test/%EA%B7%A4%EB%82%98%EB%AC%B4.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem; /* 모바일에서 패딩 조정 */
+        }
+        
+        .hero h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem); /* 반응형 폰트 크기 */
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem); /* 반응형 폰트 크기 */
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #25a99d;
+        }
+        
+        .about {
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: auto; /* 이미지 비율 유지 */
+        }
+         
+        .features {
+            text-align: center;
+            background-color: white;
+        }
+        
+        .features-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            margin-bottom: 1rem; /* 모바일에서 카드 간격 */
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .products {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .products-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 280px;
+            transition: transform 0.3s;
+            margin-bottom: 1.5rem; /* 모바일에서 여백 */
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 1.5rem; /* 모바일에서 간격 조정 */
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px; /* 모바일에서 최소 너비 감소 */
+            position: relative;
+            margin-bottom: 1.5rem; /* 모바일에서 간격 */
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+        
+        .contact {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e48c00;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem; /* 모바일에서 패딩 조정 */
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none; /* 소셜 아이콘 밑줄 제거 */
+        }
+        
+        /* 구글 폼 스타일 */
+        .contact-form iframe {
+            width: 100%;
+            height: 680px;
+            border: none;
+        }
+        
+        /* 반응형 미디어 쿼리 */
+        @media (max-width: 768px) {
+            header {
+                height: 220px; /* 모바일에서 헤더 높이 조정 */
+            }
+            
+            header h1 {
+                font-size: 1.8rem; /* 모바일에서 타이틀 크기 */
+            }
+            
+            header p {
+                font-size: 0.9rem; /* 모바일에서 서브타이틀 크기 */
+            }
+            
+            nav ul {
+                flex-direction: row; /* 유지하고 랩핑으로 처리 */
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.3rem 0.6rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .feature-card, .product-card {
+                width: 90%; /* 모바일에서 너비 조정 */
+                margin: 0 auto 1.5rem;
+            }
+                        
+            .contact-form iframe {
+                height: 750px; /* 모바일에서 높이 증가 */
+            }
+            
+            section {
+                padding: 2.5rem 1rem; /* 모바일에서 여백 감소 */
+            }
+            
+            h2 {
+                font-size: 1.5rem; /* 모바일에서 제목 크기 조정 */
+            }
+            
+            .step h3 {
+                font-size: 1rem; /* 모바일에서 단계 제목 크기 */
+            }
+            
+            .step p {
+                font-size: 0.9rem; /* 모바일에서 단계 설명 크기 */
+            }
+        }
+        
+        /* 태블릿 미디어 쿼리 추가 */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .feature-card, .product-card {
+                width: 45%; /* 태블릿에서 2열 배치 */
+            }
+            
+            
+            .step {
+                min-width: 180px; /* 태블릿에서 최소 너비 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>귤:ling 바디바</h1>
+            <p>"버려지던 감귤박, 이제는 힐링이 됩니다!"</p>
+            <p>자연을 담은 첫 번째 바디바, 감귤의 상큼함으로 채우는 친환경 힐링 타임</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">홈</a></li>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#features">특징</a></li>
+            <li><a href="#products">제품</a></li>
+            <li><a href="#process">제작 과정</a></li>
+            <li><a href="#contact">문의</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>자연의 향기, 감귤의 생명력</h2>
+            <p>버려지는 감귤박을 재활용하여 만든 100% 친환경 바디바로 지구를 지키고 건강한 아름다움을 경험하세요.</p>
+            <a href="#products" class="btn">제품 보기</a>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2>프로젝트 소개</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>제주도에서는 과즙을 짜낸 후 남은 과육과 껍질인 감귤 부산물(감귤박)이 연간 5~7만 톤 발생하여 막대한 처리 비용과 환경오염 문제를 일으키고 있습니다. 감귤박 처리 문제로 제주도는 매년 어려움을 겪고 있으며, 감귤농가는 높은 처리비용으로 경제적 부담을 안고 있습니다.</p>
+                    <p>귤링은 버려지는 수많은 감귤박을 가치있게 활용합니다. 저희는 감귤박으로 인해 발생하는 사회 문제에 집중하여, 제주 농민들의 경제적 어려움을 도와주는 동시에 환경 문제의 솔루션으로 감귤박 바디바 기획하게 되었습니다. 감귤박을 재활용하여 바디바를 제작함으로써 지속 가능한 미래를 위한 작은 발걸음을 내딛고 있습니다.</p>
+                    <p>감귤박에 함유된 헤스페리딘 성분과 비타민 C, 그리고 항산화 성분이 피부에 활력을 불어넣고, 감귤 특유의 상큼한 향기는 심신의 릴렉싱 효과를 제공합니다. 귤링은 자연 유래 성분을 사용하여 환경과 건강 모두를 생각하는 가치 있는 소비를 지향합니다.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://github.com/yuna-syn/---/blob/main/images/assortment-delicious-healthy-snacks.jpg?raw=true" alt="감귤박 배쓰밤">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <h2>제품 특징</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>친환경 업사이클링</h3>
+                    <p>버려지는 감귤박을 재활용하여 환경 보호에 기여합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍊</div>
+                    <h3>천연 성분</h3>
+                    <p>화학 성분 없이 자연 유래 성분을 사용합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>비타민 영양</h3>
+                    <p>감귤에 풍부한 헤스페리딘 성분과 비타민, 그리고 항산화 성분이 피부에 활력을 줍니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2>제품 라인업</h2>
+            <div class="products-container">
+                <div class="product-card">
+<div class="product-image">
+    <img src="https://raw.githubusercontent.com/yuna-syn/Ggul-ling/main/KakaoTalk_20250708_200438773.png" alt="귤귤바 제품 이미지" style="width: 100%; height: 100%; object-fit: cover;">
+</div>                    <div class="product-info">
+                        <h3>귤귤바</h3>
+                        <p>감귤 특유의 상큼한 향기가 가득한 기본형 바디바</p>
+                        <div class="product-price">₩7,900</div>
+                        <a href="#contact" class="btn">구매 문의</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="process" id="process">
+        <div class="container">
+            <h2>제작 과정</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>감귤박 수거</h3>
+                    <p>제주 지역 농가에서 버려지는 감귤박을 수거합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>건조 및 가공</h3>
+                    <p>수거한 감귤박을 건조하고 감귤박 파우더로 가공합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>성분 추출</h3>
+                    <p>감귤박에서 비타민과 헤스페리딘 성분을 추출합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>제형화</h3>
+                    <p>천연 성분과 배합하여 고체 바디바 형태로 제형화합니다.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>포장 및 배송</h3>
+                    <p>생분해성 포장재를 사용하여 환경 친화적으로 포장합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>문의하기</h2>
+            <div class="contact-form">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhm-PVR4kG9Q62xDizUlRRVI2z-Gsyn-paV13f5bdbyJ-T0Q/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>시트러스 바</h3>
+            <p>감귤박을 활용한 친환경 바디바 프로젝트</p>
+            <div class="social-icons">
+                <a href="#">📱</a>
+                <a href="#">📷</a>
+                <a href="#">✉️</a>
+            </div>
+            <p>&copy; 2025 귤링Ggul-ling. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
